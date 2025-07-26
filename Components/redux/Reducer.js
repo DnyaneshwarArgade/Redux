@@ -1,5 +1,6 @@
 
-import { ADD_TO_CART } from "./Constants";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "./Constants";
+
 const initialState = [];
 
 export const reducer = (state = initialState, Action) => {
@@ -10,8 +11,18 @@ export const reducer = (state = initialState, Action) => {
         ...state,
         Action.data
       ]
+
+      case REMOVE_FROM_CART :
+        let result = state.filter(item => {
+          return item.name!=Action.data
+        })
+        return [
+          ...result
+        ]
     default:
       return state;
   }
+
+
 
 }
